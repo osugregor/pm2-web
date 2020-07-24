@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/osugregor/pm2-web#readme",
   "dependencies": {
-    "http": "0.0.1-security"
+    "http": "0.0.1-security",
+    "pm2": "^4.4.0"
   }
 }

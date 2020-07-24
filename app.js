@@ -1,4 +1,4 @@
-var io = require('pm2')
+var pm2 = require('pm2');
 var http = require('http');
 
 var server = http.createServer(function (request, response) {

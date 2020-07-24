@@ -31,8 +31,10 @@ app.get('/:app', function (req, res) {
                 console.error(err);
                 return res.status(500).send("An error occured!");
             }
+
+            console.log(result)
             
-            return res.send(result.pm2_env.status);            
+            return res.send(result['pm2_env'].status);            
         });
     });
     

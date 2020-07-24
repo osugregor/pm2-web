@@ -9,13 +9,13 @@ var apps = [
 ]
 
 app.get('/', function (req, res) {
-    res.send("Provide an /app to check the status ("+apps.join(',')+")");
+    res.send("Provide an /app to check the status. Valid apps: ["+apps.join(',')+"]");
 });
 
 app.get('/:app', function (req, res) {
 
     if(!apps.includes(req.params.app)){
-        res.send("Invalid app, please provide one of: " + apps.join(','));
+        res.send("Invalid app, please provide one of: [" + apps.join(',') + "]");
     }else{
 
         pm2.connect(function (err) {

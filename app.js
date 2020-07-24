@@ -14,7 +14,7 @@ app.get('/', function (req, res) {
 
 app.get('/:app', function (req, res) {
 
-    if(!apps.contains(req.params.app)){
+    if(!apps.includes(req.params.app)){
         res.send("Invalid app, please provide one of: " + apps.join(','));
     }else{
 

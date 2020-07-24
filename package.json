@@ -1,0 +1,22 @@
+{
+  "name": "pm2-web",
+  "version": "1.0.0",
+  "description": "Simple pm2 server to check status of a server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osugregor/pm2-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/osugregor/pm2-web/issues"
+  },
+  "homepage": "https://github.com/osugregor/pm2-web#readme",
+  "dependencies": {
+    "http": "0.0.1-security"
+  }
+}

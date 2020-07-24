@@ -3,7 +3,7 @@ var express = require('express')
 const port = 8086
 
 var app = express()
-app.get('/', function (req, res) {
+app.get('/:app', function (req, res) {
     pm2.connect(function (err) {
 
         if (err) {
@@ -13,7 +13,7 @@ app.get('/', function (req, res) {
         else {
             pm2.describe('', (err, list) => {
                 console.log(err, list);
-                res.send("Hello World\n");
+                res.send(req.params.app);
             });
         }
     });

@@ -2,13 +2,23 @@ var pm2 = require('pm2');
 var http = require('http');
 
 var server = http.createServer(function (request, response) {
-
-    var result = pm2.list(function(){
-        // error, return 400
-    })
-    console.log(result);
+    
     response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end("Hello World\n");
+
+    pm2.connect(function (err) {
+
+        if (err) {
+            console.error(err);
+            process.exit(2);
+        }
+        else {
+            pm2.list((err, list) => {
+                console.log(err, list);
+                response.end("Hello World\n");
+            });
+        }
+    });
+
 });
 
 server.listen(8086);

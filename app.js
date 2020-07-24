@@ -15,24 +15,27 @@ app.get('/', function (req, res) {
 app.get('/:app', function (req, res) {
 
     if(!apps.includes(req.params.app)){
-        res.send("Invalid app, please provide one of: [" + apps.join(',') + "]");
-    }else{
+        console.error("Invalid app, please provide one of: [" + apps.join(',') + "]");
+        return res.status(500).send("Invalid app, please provide one of: [" + apps.join(',') + "]");
+    }
 
-        pm2.connect(function (err) {
-    
+    pm2.connect(function (err) {
+
+        if (err) {
+            console.error(err);
+            return res.status(500).send("An error occured!");
+        }
+
+        pm2.describe(req.params.app, (err, result) => {
             if (err) {
                 console.error(err);
-                process.exit(2);
+                return res.status(500).send("An error occured!");
             }
-            else {
-                pm2.describe('', (err, list) => {
-                    console.log(err, list);
-                    res.send(req.params.app);
-                });
-            }
+            
+            return res.send(result.pm2_env.status);            
         });
-
-    }
+    });
+    
 });
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))

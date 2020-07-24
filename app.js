@@ -1,10 +1,9 @@
 var pm2 = require('pm2');
-var http = require('http');
+var express = require('express')
+const port = 8086
 
-var server = http.createServer(function (request, response) {
-    
-    response.writeHead(200, {"Content-Type": "text/plain"});
-
+var app = express()
+app.get('/', function (req, res) {
     pm2.connect(function (err) {
 
         if (err) {
@@ -12,14 +11,12 @@ var server = http.createServer(function (request, response) {
             process.exit(2);
         }
         else {
-            pm2.list((err, list) => {
+            pm2.describe('', (err, list) => {
                 console.log(err, list);
-                response.end("Hello World\n");
+                res.send("Hello World\n");
             });
         }
     });
-
 });
 
-server.listen(8086);
-console.log("Server running at http://127.0.0.1:8086/");
+app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))

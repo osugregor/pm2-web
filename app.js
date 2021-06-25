@@ -15,7 +15,7 @@ app.get('/', function (req, res) {
 app.get('/:app', function (req, res) {
 
     if(!apps.includes(req.params.app)){
-        console.error("Invalid app, please provide one of: [" + apps.join(',') + "]");
+        //console.error("Invalid app, please provide one of: [" + apps.join(',') + "]");
         return res.status(500).send("Invalid app, please provide one of: [" + apps.join(',') + "]");
     }
 

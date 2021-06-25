@@ -38,4 +38,4 @@ app.get('/:app', function (req, res) {
     
 });
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+app.listen(port, () => console.log(`PM2 Web listening at http://localhost:${port}`))

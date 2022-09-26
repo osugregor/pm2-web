@@ -18,6 +18,6 @@
   "homepage": "https://github.com/osugregor/pm2-web#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "pm2": "^4.4.0"
+    "pm2": "^5.2.0"
   }
 }
